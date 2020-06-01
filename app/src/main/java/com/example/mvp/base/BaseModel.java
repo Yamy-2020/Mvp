@@ -13,6 +13,6 @@ public class BaseModel {
     }
 
     public void onDestory() {
-        compositeDisposable.dispose();
+        compositeDisposable.clear();
     }
 }

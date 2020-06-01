@@ -55,13 +55,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
-    @Override
     public void setData(ArrayList<MainBean.DataBean.DatasBean> datasBeans) {
         list.addAll(datasBeans);
         adapter.notifyDataSetChanged();
