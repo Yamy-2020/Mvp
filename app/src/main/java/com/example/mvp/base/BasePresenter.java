@@ -2,9 +2,9 @@ package com.example.mvp.base;
 
 import java.util.ArrayList;
 
-public abstract class BasePresenter<T extends BaseView> {
+public abstract class BasePresenter<V extends BaseView> {
 
-    public T mView;
+    public V mView;
     public ArrayList<BaseModel> models = new ArrayList<>();
 
     public BasePresenter() {
@@ -13,7 +13,7 @@ public abstract class BasePresenter<T extends BaseView> {
 
     protected abstract void initModel();
 
-    public void bindView(T view) {
+    public void bindView(V view) {
         mView = view;
     }
 

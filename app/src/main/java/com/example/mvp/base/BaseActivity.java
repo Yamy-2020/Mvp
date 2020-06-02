@@ -5,10 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mvp.widget.LoadingDialog;
+
 import butterknife.ButterKnife;
 
-public abstract class BaseActivity<T extends BasePresenter> extends AppCompatActivity implements BaseView {
-    public T mPresenter;
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView {
+    public P mPresenter;
+    private LoadingDialog mLoadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,4 +33,20 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     protected abstract void initView();
 
     protected abstract int getLayout();
+    @Override
+    public void showLoading() {
+        if (mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(this);
+        }
+        if (!mLoadingDialog.isShowing()){
+            mLoadingDialog.show();
+        }
+    }
+
+    @Override
+    public void hideLoading() {
+        if (mLoadingDialog != null ){
+            mLoadingDialog.dismiss();
+        }
+    }
 }
